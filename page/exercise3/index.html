@@ -1,0 +1,199 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Table</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="main.css">
+<head>
+<body>
+        <nav class="navbar navbar-expand-lg  navbar-light fixed-top">
+                <a class="navbar-brand" href="#">Ibrahimi</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+                            <a class="nav-link " href="/index.html">Home</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/page/exercise1/index.html">Portofolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/page/exercise2/index.html">Calculator</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/page/exercise3/index.html">Table</a>
+                        </li>
+    </ul>
+  </div>
+            </nav>
+            <div class="row"> 
+                    <div class="col-12">
+                        <div class="konten">
+                                
+                                <center><h2 style="color:white">Table Shorting</h2></center>
+        
+                                <table class="table table-bordered table-dark">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col"><div class="btn-group dropright">
+                                                <button type="button" class="btn btn-secondary">
+                                                  Name
+                                                </button>
+                                                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                  
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#" onclick="shortname(1)">A-Z</a>
+                                                        <a class="dropdown-item" href="#" onclick="shortname(2)">Z-A</a>
+                                                </div>
+                                        </div></th>
+                                            <th scope="col">
+                                                <div class="btn-group dropright">
+                                                    <button type="button" class="btn btn-secondary">
+                                                    Rotation Period
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    
+                                                    </button>
+                                                    <div class="dropdown-menu" id="dropdown">
+                                                            <a class="dropdown-item" href="#" onclick="shortrotation('reset')">Default</a>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <th scope="col">Orbital Period</th>
+                                            <th scope="col">Fiameter</th>
+                                            <th scope="col">Climate</th>
+                                            <th scope="col">Gravity</th>
+                                            <th scope="col">Terrain</th>
+                                            <th scope="col">Surface Water</th>
+                                            <th scope="col">Population</th>
+                                            <th scope="col">Residents</th>
+                                            <th scope="col">Films</th>
+                                            <th scope="col">Created</th>
+                                            <th scope="col">Edited</th>
+                                            <th scope="col">Url</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                      </table>
+                        </div>
+                    </div>
+                </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+        var data;
+        var backupdata = null;
+        function getdata(link){
+            return new Promise(function (resolve, reject) {
+                try{
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        resolve(JSON.parse(xhttp.responseText))
+                    }
+                };
+                xhttp.open("GET",link,true);
+                xhttp.send();
+                }catch{
+                    return 'error'
+                }
+            })
+        }
+        function setdata(){
+    
+            //set kosong
+            document.querySelector('tbody').innerHTML = ''
+    
+            var index=1;
+            for (var key in data ) {
+                var numres=1;
+                var numfilm=1;
+                var Residents=[];
+                var films =[];
+                for (i=0;i< data[key].residents.length;i++){
+                    Residents.push(`<a href='${data[key].residents[i]}'>People ${numres++} </a>`)
+                }
+                for (i=0;i< data[key].films.length;i++){
+                    films.push(`<a href='${data[key].films[i]}'>Film ${numfilm++} </a>`)
+                }
+                document.querySelector('tbody').innerHTML+=`
+                <tr>
+                <th scope="row">${index++ }</th>
+                <td>${data[key].name}</td>
+                <td>${data[key].rotation_period}</td>
+                <td>${data[key].orbital_period}</td>
+                <td>${data[key].diameter}</td>
+                <td>${data[key].climate}</td>
+                <td>${data[key].gravity}</td>
+                <td>${data[key].terrain.replace(',',',<br/>')}</td>
+                <td>${data[key].surface_water}</td>
+                <td>${data[key].population}</td>
+                <td>${Residents.join('<br/>')}</td>
+                <td>${films.join('<br/>')}</td>
+                <td>${data[key].created.substr(0,10)}</td>
+                <td>${data[key].edited.substr(0,10)}</td>
+                <td>${data[key].url}</td>
+                <tr>
+                `
+            }
+    
+        }
+        getdata('https://swapi.co/api/planets/?format=json').then((resp)=>{
+            data = resp.results
+            var distict = (value,index,self) =>{
+                return self.indexOf(value)===index
+            }
+            var el = [];
+            data.forEach(function(element){
+                el.push(element.rotation_period)
+            });
+            el.filter(distict).forEach(els=>{
+                    document.getElementById('dropdown').innerHTML += '<a class="dropdown-item" href="#" onclick="shortrotation('+ els  +')">'+ els  +'</a>' 
+                })
+            setdata()
+            
+        })
+        function shortname(item){
+            if(item==1){
+                data.sort(function(a, b) { return a.name > b.name ? 1:-1})
+            }else
+            {
+                data.sort(function(a, b) { return a.name < b.name ? 1:-1})
+            }
+            setdata()
+        }
+        function shortrotation(item){
+            if(backupdata  == null){
+                backupdata = data;
+            }
+            if(item=='reset'){
+                console.log(backupdata)
+                data=[]
+                for (var key in backupdata) {
+                    data.push(backupdata[key])
+                }
+                
+                setdata()
+                return
+            }
+            data = [];
+            for (var key in backupdata) {
+                if(backupdata[key].rotation_period==item){
+                    data.push(backupdata[key])
+                }
+            }
+            setdata()
+        }
+    </script>
+</html>

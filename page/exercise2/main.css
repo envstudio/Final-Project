@@ -1,0 +1,130 @@
+body{
+    background-image: url("img.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+}
+
+header{
+    height: 80px;
+}
+footer{
+    height: 80px;
+}
+.container {
+    padding-top: 20vh;
+    text-align: center;
+}
+.konten{
+    height: 400px;
+    width: 900px;
+    margin: 0px auto;
+}
+.biodata{
+    padding-top: 50px;
+    text-align: left;
+    margin-left: 80px
+}
+.biodata>div{
+    padding-bottom: 5px;
+    
+}
+.biodata div.col-4{
+    font-weight: bold;
+}
+.biodata div.col-6{
+    text-align: justify;
+    color: #7c7c7c;
+}
+.bulat{
+    margin: 1em auto;
+    -webkit-border-radius: 99em;
+    -moz-border-radius: 99em;
+    border-radius: 99em;
+    border: 2px solid dodgerblue;
+}
+.nama{
+    font-weight: bold;
+    border-radius: 3px;
+    margin-left: 30px;
+}
+.card-cs{
+    background-color: dodgerblue;
+}
+.social {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    display: inline;
+}
+ul.social li{
+    display: inline;
+    padding-left: 30px;
+}
+ul.social i{
+    color: white;   
+    font-size: 32px;
+}
+ul.social i:hover{
+    color: dodgerblue;
+    width: 33px;
+    background-color: white;
+    border-radius: 9px;
+}
+.carousel-item{
+    height: 100vh;
+    min-height: 100%;
+    background:no-repeat center center scroll;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.navbar-light .navbar-toggler{
+    background: white;
+}
+.navbar-light .navbar-brand{
+    color: white;
+}
+.navbar-light .navbar-brand:hover{
+    color: white;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    padding-left:30px;
+    padding-right:30px;
+}
+@media (max-width: 992px) {
+    .navbar-light .navbar-nav .nav-link {
+        color: white;
+        padding: 0 10px 10px 0;
+    }
+    
+  }
+.navbar-light .navbar-nav .nav-link:hover {
+    color: white;
+    border-bottom: 2px solid white;
+    text-decoration: none; 
+}
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: white;
+    border-bottom: 2px solid white;
+    text-decoration: none; 
+}
+
+.btnwarna{
+    background-color: dodgerblue;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+.btnwarna:hover{
+    background-color: rgb(100, 177, 255);
+    color: white;
+    display: inline;
+    text-decoration: none;
+}
+.cs-hs{
+    text-align: right;
+    font-size: 25px;
+}
